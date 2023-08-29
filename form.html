@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation with  js</title>
+
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body align="center">
+    <h1>FORM VALIDATION IN JS</h1>
+<form id="form" onsubmit="return validation() " action="/home/student/Documents/javascript/response.html" method="get">
+    <!--username--><br><br><br>
+    Username:
+    <label for="username"></label>
+    <input type="text" id="username"  placeholder="username"><br>
+    <small class="error" id="userer">*required field</small>
+
+    <!--email--><br><br><br>
+    Email:
+    <label for="email"></label>
+    <input type="email" id="email"  placeholder="email"><br>
+    <small class="error" id="emailer">*required field</small>
+
+    <!--phone number--><br><br><br>
+    Phone number:
+    <label for="tel"></label>
+    <input type="tel" id="tel"  placeholder="phone number"><br>
+    <small class="error" id="teler">*required field</small>
+
+    <!--password--><br><br><br>
+    Password:
+    <label for="pwd"></label>
+    <input type="password" id="pwd"  placeholder="password"><br>
+    <small class="error" id="pwder">*required field</small>
+
+    <!--confirm password--><br><br><br>
+    Confirm Password:
+    <label for="cfpwd"></label>
+    <input type="password" id="cfpwd"  placeholder="confirm password"><br>
+    <small class="error" id="cfpwder">*required field</small>
+    <br><br><br><br><br><br>
+
+    <input type="submit" placeholder="submit">
+
+
+</form>
+
+
+<script>
+
+function validation(){
+    const user=document.getElementById("username").value.trim();
+    //const userer=document.getElementById("userer");
+
+    const email=document.getElementById("email").value.trim();
+    const emailer=document.getElementById("emailer");
+
+    const tel=document.getElementById("tel").value.trim();
+    const teler=document.getElementById("teler");
+
+    const pwd=document.getElementById("pwd").value.trim();
+    const pwder=document.getElementById("pwder");
+
+    const cfpwd=document.getElementById("cfpwd").value.trim();
+    const cfpwder=document.getElementById("cfpwder");
+
+    //username
+    if(user==""){
+        document.getElementById("userer").innerHTML="*username can't be blank";
+        return false;
+    }
+     if(user.length<=2){
+        userer.innerText="too short";
+        return false;
+    }
+    else{
+        userer.innerText="";
+    }
+
+    //email
+    const t=/^[a-zA-Z0-9*+-^!]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(email==""){
+        emailer.innerText="*email can't be blank";
+        return false;
+    }
+    if(!(t.test(email))){
+        emailer.innerText="*invalid email";
+        return false;
+    }
+    else{
+        emailer.innerText="";
+    }
+
+    //telphone number
+    const p=/^[1-9][0-9]{9}/;
+    if(tel==""){
+        teler.innerText="*can't be blank";
+        return false;
+    }
+     if(!(p.test(tel))){
+        teler.innerText="*invalid number";
+        return false;
+    }
+    else{
+        teler.innerText="";
+    }
+
+    //password
+    const d=/[a-zA-Z0-9!@#$%^&*-+=]/;
+    if(pwd==""){
+        pwder.innerText="* can't be empty";
+        return false;
+    }
+    if(!(d.test(pwd))){
+        pwder.innerText="* include characters";
+        return false;
+    }
+    else{
+        pwder.innerText="";
+    }
+
+    //confirm password
+    if(pwd!=cfpwd){
+        cfpwder.innerText="* incorrect password";
+        return false;
+    }
+    else{
+        cfpwder.innerText="";
+    }
+}
+
+</script>
+
+</body>
+</html>
